@@ -49,17 +49,77 @@ def aplicar_estilos():
                 background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
             }
 
-            [data-testid="stSidebar"] label,
-            [data-testid="stSidebar"] p,
-            [data-testid="stSidebar"] span,
-            [data-testid="stSidebar"] div {
-                color: #f8fafc;
-            }
-
             [data-testid="stSidebar"] h1,
             [data-testid="stSidebar"] h2,
-            [data-testid="stSidebar"] h3 {
-                color: #ffffff;
+            [data-testid="stSidebar"] h3,
+            [data-testid="stSidebar"] .stMarkdown,
+            [data-testid="stSidebar"] .stMarkdown p,
+            [data-testid="stSidebar"] .stMarkdown span,
+            [data-testid="stSidebar"] .stMarkdown div {
+                color: #f8fafc !important;
+            }
+
+            [data-testid="stSidebar"] label {
+                color: #f8fafc !important;
+                font-weight: 600 !important;
+            }
+
+            /* Inputs numéricos y campos de texto */
+            [data-testid="stSidebar"] input {
+                color: #0f172a !important;
+                background-color: #ffffff !important;
+            }
+
+            [data-testid="stSidebar"] [data-baseweb="input"] {
+                background-color: #ffffff !important;
+                color: #0f172a !important;
+                border-radius: 10px !important;
+            }
+
+            [data-testid="stSidebar"] [data-baseweb="input"] * {
+                color: #0f172a !important;
+            }
+
+            /* Selectbox */
+            [data-testid="stSidebar"] [data-baseweb="select"] {
+                background-color: #ffffff !important;
+                color: #0f172a !important;
+                border-radius: 10px !important;
+            }
+
+            [data-testid="stSidebar"] [data-baseweb="select"] * {
+                color: #0f172a !important;
+            }
+
+            [role="listbox"] div,
+            [role="option"] {
+                color: #0f172a !important;
+                background-color: #ffffff !important;
+            }
+
+            /* Botones */
+            .stButton > button,
+            .stFormSubmitButton > button {
+                background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+                color: #ffffff !important;
+                border: none !important;
+                border-radius: 14px !important;
+                padding: 0.8rem 1rem !important;
+                font-weight: 800 !important;
+                width: 100% !important;
+                box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25) !important;
+            }
+
+            .stButton > button *,
+            .stFormSubmitButton > button * {
+                color: #ffffff !important;
+            }
+
+            .stButton > button:hover,
+            .stFormSubmitButton > button:hover {
+                background: linear-gradient(135deg, #1d4ed8, #1e40af) !important;
+                color: #ffffff !important;
+                border: none !important;
             }
 
             .hero {
@@ -233,23 +293,6 @@ def aplicar_estilos():
                 margin-top: 2rem;
             }
 
-            .stButton > button {
-                background: linear-gradient(135deg, #2563eb, #1d4ed8);
-                color: white;
-                border: 0;
-                border-radius: 14px;
-                padding: 0.8rem 1rem;
-                font-weight: 800;
-                width: 100%;
-                box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
-            }
-
-            .stButton > button:hover {
-                background: linear-gradient(135deg, #1d4ed8, #1e40af);
-                color: white;
-                border: 0;
-            }
-
             .stForm {
                 border: 0;
             }
@@ -334,7 +377,9 @@ def bloque_probabilidades(tabla):
     }
 
     orden = ["alto", "medio", "bajo"]
-    tabla = tabla.set_index("Nivel").loc[[nivel for nivel in orden if nivel in tabla["Nivel"].values]].reset_index()
+    tabla = tabla.set_index("Nivel").loc[
+        [nivel for nivel in orden if nivel in tabla["Nivel"].values]
+    ].reset_index()
 
     html = ""
 
